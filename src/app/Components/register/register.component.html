@@ -1,0 +1,150 @@
+
+<nz-modal [(nzVisible)]="showMdl" nzWidth="1000px"  nzTitle="Бүртгэлийн талбар"  (nzOnCancel)="close()">
+    <div *nzModalContent>
+
+      <!-- <label >Хэрэглэгчийн төрөл</label>
+      <select  name="dom"  style="width:400px"  id="custype"  [(ngModel)]="fdata.cusType" [ngModelOptions]="{standalone: true}">
+        <option value="-1">Сонгох</option>
+        <option *ngFor="let state of cdt" [value]="state.val">{{ state.name }}</option>
+      </select>  -->
+      <nz-alert nzType="success" nzMessage="{{message}}" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''" nzCloseable></nz-alert>
+      <br>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5"  nzRequired>Хэрэглэгчийн төрөл</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Төрлийг сонгоно уу!">
+          <nz-select [(ngModel)]="fdata.cusType">
+            <nz-option nzValue="-1" nzLabel="Сонгох"></nz-option>
+            <nz-option *ngFor="let state of cdt" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired >Овог</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Овог нэрийг оруулна уу!">
+          <input id="ovog" type="text" nz-input [(ngModel)]="fdata.lName"  placeholder="Овог" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired >Нэр</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Нэрийг оруулна уу!">
+          <input id="ner" type="text" nz-input [(ngModel)]="fdata.fName"  placeholder="Нэр" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired >Регистр</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Регистр оруулна уу!">
+          <input id="regNum" type="text" nz-input [(ngModel)]="fdata.regNum"  placeholder="Регистр" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired >Утасны дугаар</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Утасны дугаар оруулна уу!">
+          <input id="phoneNum" type="text" nz-input [(ngModel)]="fdata.phoneNum"  placeholder="Утасны дугаар" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired >Имэйл</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Утасны дугаар оруулна уу!">
+          <input id="email" type="text" nz-input [(ngModel)]="fdata.email"  placeholder="И-мэйл" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired >Нууц үг</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Нууц үг оруулна уу!">
+          <input id="pass" type="text" nz-input [(ngModel)]="fdata.userPassword"  placeholder="И-мэйл" />
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5" nzRequired >Нууц үг дахин</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Нууг үг давтан оруулна уу!">
+          <input id="passre" type="text" nz-input [(ngModel)]="fdata.userPasswordRep"  placeholder="И-мэйл" />
+        </nz-form-control>
+      </nz-form-item>
+
+
+
+    </div>
+    <div *nzModalFooter>
+      <div nz-row nzJustify="space-around" nzAlign="middle">
+        <button  nz-button class="utbtnsuc" (click)="Save(fdata)" >{{fdata.userID==-1?'Нэмэх':'Засах'}}</button>
+        <!-- <button #cb nz-button class="utbtnsuc" (click)="close()" >Хаах</button> -->
+      </div>
+    </div>
+  </nz-modal>
+<!--
+   <div class="container">
+            <label   class="col-sm-12 alert alert-success" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''">{{message}}</label>
+            <div class="modal-title text-center">Хэрэглэгчийн бүртгэл</div>
+            <clr-select-container class="clr-form-control" >
+                <label class="clr-control-label">Хэрэглэгчийн төрөл</label>
+                <select clrSelect name="dom"  style="width:400px"  id="custype"  [(ngModel)]="fdata.cusType" [ngModelOptions]="{standalone: true}">
+                    <option value="-1">Сонгох</option>
+                    <option *ngFor="let state of cdt" [value]="state.val">{{ state.name }}</option>
+                </select>
+            </clr-select-container>
+
+          <div class="clr-form-control">
+                <label for="example4" class="clr-control-label">Овог</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="text" [(ngModel)]="fdata.lName"  placeholder="Овог" class="clr-input" size="50" />
+                    </div>
+                </div>
+            </div>
+            <div class="clr-form-control">
+                <label for="example4" class="clr-control-label">Нэр</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="text" [(ngModel)]="fdata.fName" placeholder="Нэр" class="clr-input" size="50" />
+                    </div>
+                </div>
+            </div>
+            <div class="clr-form-control">
+                <label for="example4" class="clr-control-label">Регистер</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="text" [(ngModel)]="fdata.regNum"  placeholder="Овог" class="clr-input" size="50" />
+                    </div>
+                </div>
+            </div>
+            <div class="clr-form-control">
+                <label for="example4" class="clr-control-label">Утасны дугаар</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="text" [(ngModel)]="fdata.phoneNum" placeholder="Утасны дугаар" class="clr-input" size="50" />
+                    </div>
+                </div>
+            </div>
+            <div class="clr-form-control">
+                <label for="example4" class="clr-control-label">И-мэйл</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="text" [(ngModel)]="fdata.email" placeholder="И-мэйл" class="clr-input" size="50" />
+                    </div>
+                </div>
+            </div>
+            <div class="clr-form-control">
+                <label for="example4" class="clr-control-label">Нууц үг</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="password"  [(ngModel)]="fdata.userPassword" placeholder="Нууц үг" class="clr-input" size="50" />
+                    </div>
+                </div>
+            </div>
+            <div class="clr-form-control">
+                <label for="example4" class="clr-control-label">Нууг үг дахин</label>
+                <div class="clr-control-container">
+                    <div class="clr-input-wrapper">
+                        <input type="password" [(ngModel)]="fdata.userPasswordRep" placeholder="Нууг үг давтан оруулна уу" class="clr-input" size="50" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="text-center">
+                 <button (click)="Save(fdata)" class="btn btn-primary btn-sm">{{fdata.userID==-1?'Нэмэх':'Засах'}}</button>
+                 <button (click)="close()" class="btn btn-primary btn-sm">Хаах</button>
+                </div>
+            </div>
+        </div>
+-->

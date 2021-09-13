@@ -1,0 +1,50 @@
+<nz-alert nzType="success" nzMessage="{{message}}" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''" ></nz-alert>
+<div style="width: 100%; overflow:scroll;"  >
+    <div nz-row  nzJustify="space-around" nzAlign="middle" class="uttxtbrwn"><b>Файлын жагсаалт</b></div>
+    <div nz-row  nzAlign="left">
+       
+    </div>
+    <nz-table #basicTable [nzData]="rows" nzSize="small" >
+      <thead>
+        <tr>
+          <th rowspan="2">№</th>
+          <th rowspan="2">Баримт бичгийн нэр
+            <!-- <br><input type="text"  #ovog class="utflinpt"  [(ngModel)]="fdata.lName" (ngModelChange)="rebind2(ovog.value)" /> -->
+          </th>
+          <th rowspan="2">Огноо
+            <!-- <br><input type="text" #reg class="utflinpt"  [(ngModel)]="fdata.regNum"    (keyup)="rebind2(reg.value)"/> -->
+          </th>
+          <th rowspan="2">Дугаар
+            <!-- <br><input type="text" #dug class="utflinpt" [(ngModel)]="fdata.phoneNum"    (keyup)="rebind2(dug.value)"/> -->
+          </th>
+          <th rowspan="2">Хуудас
+            <!-- <br><input type="text" #typeName class="utflinpt" [(ngModel)]="fdata.csTypeName"    (keyup)="rebind2(typeName.value)"/> -->
+          </th>
+        
+          <th colspan="2">Файл</th>
+          <th rowspan="2">Үйлдэл</th>
+        </tr>
+        <tr>
+          <th nzWidth="100px">Сонгох</th>
+          <th nzWidth="100px">хадгалагдсан эсэх</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of basicTable.data ;  let i = index" style="background-color: #fff  !important;">
+            <td>{{ i + 1 }}</td>
+            <td>{{data.sfName}}</td>
+            <td><nz-date-picker  nz-row nzAlign="left" [(ngModel)]="data.ognoo"   nzFormat="yyyy-MM-dd" placeholder="огноо" ></nz-date-picker></td>
+            <td><input type="text" #no  style="border: .05rem solid;" [(ngModel)]="data.dugaar"  /></td>
+            <td><input type="text" #pg style="border: .05rem solid;" [(ngModel)]="data.huudas"  /></td>
+            <td > <input type="File"   (change)="onFileSelected($event)"  placeholder="Файл оруулна уу" class="clr-input" size="50" /></td>
+            <!-- <td><button nz-button nzType="primary" (click)="fileInput.click()"><input #fileInput type="file" (change)="onFileSelected($event)" (ngModelChange)="chData(data)"  /><i nz-icon nzType="upload"></i>файл сонгох</button></td> -->
+            <!-- <td><nz-upload ><button nz-button><i nz-icon nzType="upload"></i>файл сонгох</button></nz-upload></td> -->
+            <td> <a  href="{{FileURL}}/{{data.filePath}}" target="_blank"    [ngClass]="data.hvtype==0?'disabled-link':'active-link'">{{data.hvtype==0?'Үгүй':'Тийм'}}</a></td>
+            <td><button  nz-button  [nzSize]="small"  style="color: green ;" nzType="default" nz-tooltip nzTooltipTitle="Хадгалах" (click)="oneSave(data,1)">хадгалах </button></td>
+        </tr>
+      </tbody>
+    </nz-table>
+</div>
+
+  
+  

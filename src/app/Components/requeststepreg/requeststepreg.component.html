@@ -1,0 +1,31 @@
+<div nz-row>
+  <div nz-col nzMd="24" nzJustify="center">
+    <nz-alert nzType="warning" nzMessage="{{message}}" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''" ></nz-alert>
+    <br>
+     <nz-steps [nzCurrent]="current" (nzIndexChange)="onIndexChange($event)" >
+       <nz-step *ngFor="let x of stpv" nzTitle="{{x.name}}" [nzDisabled]="!disabled"></nz-step>
+   </nz-steps>
+   <br>
+     <div class="steps-content" style="margin-top: 0px;padding-top: 5px;border: 1px dotted brown;"> 
+      <!-- <nz-card> -->
+        <app-rqmain *ngIf="current ==0" ></app-rqmain>
+        <app-rqopos *ngIf="current ==1"></app-rqopos>
+        <app-rqeinfo *ngIf="current ==2"></app-rqeinfo>
+        <app-rqfile *ngIf="current ==3"></app-rqfile>
+      <!-- </nz-card> -->
+     </div>
+     <div class="steps-action">
+       <button nz-button nzType="default" class="utbtninfo" (click)="pre()"  *ngIf="current > 0">
+         <i nz-icon nzType="double-left" nzTheme="outline"></i> өмнөх
+       </button>
+       <button nz-button nzType="default" class="utbtninfo" (click)="next()" *ngIf="current < val1">
+        дараах<i nz-icon nzType="double-right" nzTheme="outline"></i>
+       </button>
+       <button nz-button nzType="primary" class="utbtnsuc" (click)="done()" *ngIf="current === val1">
+         <span>гүйцэтгэсэн</span>
+       </button>
+     </div>
+  </div>
+</div>
+
+    

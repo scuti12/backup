@@ -1,0 +1,19 @@
+  
+#appContainer{
+    height: 100vh;
+    width: 100%;
+    /* background-image: linear-gradient(to right, rgba(251,194,235,1), rgba(179,202,243,1)); */
+    background-image: linear-gradient(to right, rgba(97 142 223), rgba(179,202,243,1));
+    /* background-image: linear-gradient(to right, rgb(127, 125, 207), rgba(179,202,243,1)); */
+    position: fixed;
+}
+.form-control{
+border-radius: 0;
+font-size: small;
+}
+
+
+.ant-btn .ant-btn-success{
+    background-color: green !important;
+}
+

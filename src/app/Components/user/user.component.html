@@ -1,0 +1,46 @@
+<!-- <app-register (UsrEmitterobj)="receiveMessage($event)" ></app-register> -->
+<app-register  ></app-register>
+<nz-alert nzType="success" nzMessage="{{message}}" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''" ></nz-alert>
+<div style="width: 100%; overflow:scroll;"  class="uttbbrdr" >
+  <div nz-row  nzJustify="space-around" nzAlign="middle" class="uttxtbrwn"><b>Хэрэглэгчийн жагсаалт</b></div>
+  <div nz-row  nzAlign="left">
+      <a nz-button  nzSize="small"  class="uttxtprm utbdr" (click)="modalReg.openReg(fdata)"><i nz-icon nzType="plus"></i>Нэмэх</a>
+  </div>
+  <nz-table   #basicTable [nzData]="rows" nzSize="small" >
+    <thead>
+      <tr >
+        <th nzWidth="10px">№</th>
+        <th nzJustify="center" nz-th>Овог<br>
+          <input type="text"  #ovog class="utflinpt"  [(ngModel)]="fdata.lName" (ngModelChange)="rebind2(ovog.value)" />
+        </th>
+        <th>Нэр<br>
+          <input type="text" #ner class="utflinpt" [(ngModel)]="fdata.fName"    (change)="rebind2(ner.value)"/>
+        </th>
+        <th>Регистр<br>
+          <input type="text" #reg class="utflinpt"  [(ngModel)]="fdata.regNum"    (keyup)="rebind2(reg.value)"/>
+        </th>
+        <th>Утасны дугаар<br>
+          <input type="text" #dug class="utflinpt" [(ngModel)]="fdata.phoneNum"    (keyup)="rebind2(dug.value)"/>
+        </th>
+        <th>Хэрэглэгчийн төрөл<br>
+          <input type="text" #typeName class="utflinpt" [(ngModel)]="fdata.csTypeName"    (keyup)="rebind2(typeName.value)"/>
+        </th>
+        <th colspan="2">Үйлдэл</th>
+      </tr>
+
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data ;  let i = index" style="background-color: #fff  !important;">
+          <td>{{ i + 1 }}</td>
+          <td >{{data.lName}}</td>
+          <td>{{data.fName}}</td>
+          <td>{{data.regNum}}</td>
+          <td>{{data.phoneNum}}</td>
+          <td>{{data.csTypeName}}</td>
+          <td><button  nz-button  [nzSize]="small" nzShape="circle" nzType="primary" nz-tooltip nzTooltipTitle="засах" (click)="modalReg.openReg(data)"><i nz-icon nzType="edit"></i> </button></td>
+          <td><button  nz-button  [nzSize]="small" nzTitle="ddss" nzShape="circle" nz-tooltip nzTooltipTitle="устгах" nzDanger (click)="usrDel(data)"><i nz-icon nzType="delete"></i> </button></td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+

@@ -1,0 +1,40 @@
+<div nz-row>
+    <div nz-col nzMd="18">
+    <nz-divider nzText="Цахилгаан хэрэглээний мэдээлэл" nzOrientation="left"></nz-divider>
+    <nz-alert nzType="warning" nzMessage="{{message}}" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''" ></nz-alert>
+    <nz-form-item >
+        <nz-form-label [nzSm]="12" [nzXs]="24"  >Сууцны халаалтын төрөл</nz-form-label>
+        <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Сууцны халаалтын төрөл сонгоно уу!"  >
+          <nz-select   nzPlaceHolder="Сууцны халаалтын төрөл сонгоно уу" [(ngModel)]="fdata.ehID" >
+            <nz-option nzValue="-1" nzLabel="Сонгох"></nz-option>
+            <nz-option *ngFor="let option of ehdata" [nzLabel]="option.name" [nzValue]="option.val"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item >
+        <nz-form-label [nzSm]="12" style="line-height: 9px;" [nzXs]="24"  >Цахилгаан хэрэглээний <br> тооцооны хамгийн их чадал</nz-form-label>
+        <nz-form-control [nzSm]="12" [nzXs]="24" >
+            
+            <input  type="text" nz-input  [(ngModel)]="fdata.maxs"  placeholder="хамгийн их чадал" /> 
+          </nz-form-control>
+      </nz-form-item>
+      <nz-form-item >
+        <nz-form-label [nzSm]="12" [nzXs]="24"  >Хүчдлийн түвшин</nz-form-label>
+        <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Хүчдлийн түвшин сонгоно уу!"  >
+          <nz-select  nzPlaceHolder="хүчдлийн түвшин" [(ngModel)]="fdata.pwID" >
+            <nz-option nzValue="-1" nzLabel="Сонгох"></nz-option>
+            <nz-option *ngFor="let option of pwdata" [nzLabel]="option.name" [nzValue]="option.val"></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item >
+        <nz-form-label [nzSm]="12" [nzXs]="24"  >Чадлын коэффициент</nz-form-label>
+        <nz-form-control [nzSm]="12" [nzXs]="24" >
+            <input  type="text" nz-input  [(ngModel)]="fdata.pcoef"  placeholder="чадлын коэффициент" /> 
+          </nz-form-control>
+      </nz-form-item>
+      <div nz-row nzJustify="space-around" nzAlign="middle">
+        <button  nz-button class="utbtnsuc" (click)="Save(fdata)" >{{fdata.reID=='-1'?'Нэмэх':'Засах'}}</button>
+      </div>
+    </div>
+</div>

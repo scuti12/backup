@@ -1,0 +1,54 @@
+
+<div style="width: 100%; overflow:scroll;"  class="uttbbrdr" >
+  <div nz-row  nzJustify="space-around" nzAlign="middle" class="uttxtbrwn"><b>Хүсэлтийн жагсаалт</b></div>
+  <div nz-row  nzAlign="left">
+      <a nz-button  nzSize="small" [routerLink]="['/requssr', rqID,0]" class="uttxtprm utbdr"><i nz-icon nzType="plus" ></i>Хүсэлт үүсгэх</a>
+  </div>
+  <nz-table #basicTable [nzData]="rows" nzSize="small" >
+    <thead>
+      <tr>
+        <th rowspan="2">№</th>
+        <th rowspan="2">Хэрэглэгчийн төрөл
+          <!-- <br><input type="text"  #ovog class="utflinpt"  [(ngModel)]="fdata.lName" (ngModelChange)="rebind2(ovog.value)" /> -->
+        </th>
+        <th rowspan="2">Ангилал
+          <!-- <br><input type="text" #reg class="utflinpt"  [(ngModel)]="fdata.regNum"    (keyup)="rebind2(reg.value)"/> -->
+        </th>
+        <th rowspan="2">Дэд ангилал
+          <!-- <br><input type="text" #dug class="utflinpt" [(ngModel)]="fdata.phoneNum"    (keyup)="rebind2(dug.value)"/> -->
+        </th>
+        <th rowspan="2">Хүсэлтийн төлөв
+          <!-- <br><input type="text" #typeName class="utflinpt" [(ngModel)]="fdata.csTypeName"    (keyup)="rebind2(typeName.value)"/> -->
+        </th>
+        <th rowspan="2">Итгэмжлэгдсэн <br>төлөөлөгч</th>
+        <th rowspan="2">Үйлдэл</th>
+        <th colspan="3">Мэдээлэлтэй эсэх</th>
+      </tr>
+      <tr>
+        <th nzWidth="100px">Байршил</th>
+        <th nzWidth="100px">Цахилгаан</th>
+        <th nzWidth="100px">Файл</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data ;  let i = index" style="background-color: #fff  !important;">
+          <td>{{ i + 1 }}</td>
+          <td>{{data.csTypeName}}</td>
+          <td>{{data.iwName}}</td>
+          <td>{{data.usName}}</td>
+          <td>{{data.rtName}}</td>
+          <td style="pointer-events: none;"><a >{{data.hvAccr}}</a></td>
+          <td><a [routerLink]="['/requssr', data.rqID,0]">засах</a></td>
+          <td ><a href="#" [routerLink]="['/requssr', data.rqID,1]" [ngClass]="data.hvBairshil=='үгүй'?'disabled-link':'active-link'">{{data.hvBairshil}}</a></td>
+          <td nzRight><a href="#" [routerLink]="['/requssr', data.rqID,2]" [ngClass]="data.hvElec=='үгүй'?'disabled-link':'active-link'">{{data.hvElec}}</a></td>
+          <td ><a href="#" [routerLink]="['/requssr', data.rqID,3]" [ngClass]="data.hvFile=='үгүй'?'disabled-link':'active-link'">{{data.hvFile}}</a></td>
+
+          <!-- <td>засах</td>
+          <td>устгах</td> -->
+      </tr>
+    </tbody>
+  </nz-table>
+</div>
+
+

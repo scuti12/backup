@@ -1,0 +1,136 @@
+
+<nz-layout class="app-layout">
+  <nz-sider class="menu-sidebar"
+            nzCollapsible
+            nzWidth="256px"
+            nzBreakpoint="md"
+            [(nzCollapsed)]="isCollapsed"
+            [nzTrigger]="null">
+    <div class="sidebar-logo">
+      <a href="#" target="_blank">
+
+        <img src="../../assets/logo.png" width="40px" height="40px"/>
+        <h1>ДСЦТС</h1>
+      </a>
+    </div>
+    <ul  nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+      <li  nz-menu-item  nz-tooltip nzTooltipPlacement="right"  [nzTooltipTitle]="isCollapsed?'Хянах самбар':''"> <i nz-icon nzType="dashboard"></i><span><a   [routerLink]="['/dash']">Хянах самбар</a></span></li>
+      <li  nz-menu-item  nz-tooltip nzTooltipPlacement="right" [nzTooltipTitle]="isCollapsed?'Хүсэлт':''"><i nz-icon nzType="form"></i> <span><a   [routerLink]="['/requs']">Хүсэлт</a></span></li>
+      <li  nz-menu-item  nz-tooltip nzTooltipPlacement="right" [nzTooltipTitle]="isCollapsed?'Холбох зөвшөөрөл':''"><i nz-icon nzType="form"></i> <span><a   [routerLink]="['/user']">Холбох зөвшөөрөл</a></span></li>
+      <li  nz-menu-item  nz-tooltip nzTooltipPlacement="right" [nzTooltipTitle]="isCollapsed?'Техникийн нөхцөл':''"><i nz-icon nzType="form"></i> <span><a   [routerLink]="['/user']">Техникийн нөхцөл</a></span></li>
+      <li nz-submenu nzOpen nzTitle="Тохиргоо" nzIcon="form">
+        <ul>
+          <li nz-menu-item nzMatchRouter>
+            <a   [routerLink]="['/comms']">Комиссын гишүүд</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a  [routerLink]="['/user']">Системийн хэрэглэгчид</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a >Харилцагч хэрэглэгчид</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a  [routerLink]="['/setfile']" >Бүрдүүлэх материал</a>
+          </li>
+          <li nz-menu-item nzMatchRouter>
+            <a >Техникийн нөхцөлийн загвар</a>
+          </li>
+
+        </ul>
+      </li>
+
+      <li  nz-menu-item  nz-tooltip nzTooltipPlacement="right"  [nzTooltipTitle]="isCollapsed?'Системээс гарах':''"> <i nz-icon nzType="logout"></i><span><a  (click)="logout()">Гарах</a></span></li>
+
+
+      <!-- <ng-container *ngTemplateOutlet="recursiveListTmpl; context:{ list:list }"></ng-container>
+      <ng-template #recursiveListTmpl let-list="list">
+
+        <div *ngFor="let node of list">
+          <a clrVerticalNavLink [routerLink]="node.SModUrl" routerLinkActive="active" *ngIf="node.SMenuID==-1">
+            <clr-icon [attr.shape]="node.SMenuIcon" clrVerticalNavIcon></clr-icon>
+            {{node.SMenuName}}
+          </a>
+          <clr-vertical-nav-group *ngIf="node.SMenuID!=-1 && node.Children">
+            <clr-icon [attr.shape]="node.SMenuIcon" clrVerticalNavIcon></clr-icon>
+            {{node.SMenuName}}
+            <clr-vertical-nav-group-children *ngFor="let child of node.Children">
+              <a clrVerticalNavLink [routerLink]="child.SModUrl" routerLinkActive="active">
+                <clr-icon [attr.shape]="child.SMenuIcon" clrVerticalNavIcon></clr-icon>
+                {{child.SMenuName}}
+              </a>
+              <ng-container *ngTemplateOutlet="recursiveListTmpl; context:{ list: child.Children }">
+              </ng-container>
+            </clr-vertical-nav-group-children>
+          </clr-vertical-nav-group>
+        </div>
+      </ng-template> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <ng-container *ngTemplateOutlet="recursiveListTmpl; context:{ list:list }"></ng-container>
+      <ng-template #recursiveListTmpl let-list="list">
+
+        <div *ngFor="let node of list">
+          <a clrVerticalNavLink [routerLink]="node.SModUrl" routerLinkActive="active" *ngIf="node.SMenuID==-1">
+            <clr-icon [attr.shape]="node.SMenuIcon" clrVerticalNavIcon></clr-icon>
+            {{node.SMenuName}}
+          </a>
+          <clr-vertical-nav-group *ngIf="node.SMenuID!=-1 && node.Children">
+            <clr-icon [attr.shape]="node.SMenuIcon" clrVerticalNavIcon></clr-icon>
+            {{node.SMenuName}}
+            <clr-vertical-nav-group-children *ngFor="let child of node.Children">
+              <a clrVerticalNavLink [routerLink]="child.SModUrl" routerLinkActive="active">
+                <clr-icon [attr.shape]="child.SMenuIcon" clrVerticalNavIcon></clr-icon>
+                {{child.SMenuName}}
+              </a>
+              <ng-container *ngTemplateOutlet="recursiveListTmpl; context:{ list: child.Children }">
+              </ng-container>
+            </clr-vertical-nav-group-children>
+          </clr-vertical-nav-group>
+        </div>
+      </ng-template> -->
+
+
+
+
+
+
+
+    </ul>
+  </nz-sider>
+  <nz-layout>
+    <nz-header>
+      <div class="app-header">
+        <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
+            <i class="trigger"
+               nz-icon
+               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+            ></i>
+        </span>
+      </div>
+    </nz-header>
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+  </nz-layout>
+</nz-layout>

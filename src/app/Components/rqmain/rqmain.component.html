@@ -1,0 +1,146 @@
+
+        <nz-alert nzType="warning" nzMessage="{{message}}" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''" ></nz-alert>
+        <div nz-row>
+          <nz-divider nzText="Хүсэлтийн ерөнхий мэдээлэл" nzOrientation="left"></nz-divider>
+            <div nz-col nzMd="18">
+                <nz-form-item>         
+                    <nz-form-label  [nzSm]="12" [nzXs]="24"  nzSmall >Техникийн нөхцөлийн хүсэлтийн ангилал</nz-form-label>
+                    <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Төрлийг сонгоно уу!"  >
+                      <nz-select #iw [(ngModel)]="fdata.iwID" (ngModelChange)="cmbMChange(1)">
+                        <nz-option nzValue="-1" nzLabel="Сонгох"></nz-option>
+                        <nz-option *ngFor="let state of iwdata" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </nz-form-item>
+
+                  <nz-form-item *ngIf="sw3">
+                    <nz-form-label [nzSm]="12" [nzXs]="24"  >Өөрчлөлт оруулах ангилал</nz-form-label>
+                    <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Өөрчлөлт оруулах ангилал сонгоно уу!"  >
+                      <nz-select  [nzSize]="size" nzMode="multiple" nzPlaceHolder="Ангиллыг сонгоно уу" [(ngModel)]="UUUUUUUUUUU" (ngModelChange)="cmbMChange(3)">
+                        <nz-option *ngFor="let option of ctdata" [nzLabel]="option.name" [nzValue]="option.val"></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item *ngIf="sw5">
+                    <nz-form-label [nzSm]="12" [nzXs]="24"  >{{txtRsn}}</nz-form-label>
+                    <nz-form-control [nzSm]="12" [nzXs]="24" >
+                        <input  type="text" nz-input  [(ngModel)]="fdata.oreason"  placeholder="шалтгааны тайлбар" /> 
+                      </nz-form-control>
+                  </nz-form-item>
+                 
+                  <nz-form-item *ngIf="sw6">
+                        <nz-form-label [nzSm]="12" [nzXs]="24"  >{{txtTnum}}</nz-form-label>
+                        <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip=" техникийн нөхцөлийн дугаар"  >
+                            <nz-select >
+                            <option value="-1">Сонгох</option>
+                            <option ></option>
+                            </nz-select>
+                        </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item *ngIf="sw7">
+                    <nz-form-label [nzSm]="12" [nzXs]="24" style="white-space: pre-wrap" >Техникийн нөхцлийн огноо</nz-form-label>
+                    <nz-form-control [nzSm]="12" [nzXs]="24"  nzErrorTip="Техникийн нөхцлийн огноо"  >
+                        <nz-date-picker  nz-row nzAlign="left" [(ngModel)]="fdata.tnognoo"></nz-date-picker>
+                    </nz-form-control>
+                  </nz-form-item>
+    
+
+                   <nz-form-item  *ngIf="sw2">
+                    <nz-form-label [nzSm]="12" [nzXs]="24"  >Ажил үйлчилгээний зориулалт</nz-form-label>
+                    <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Ажил үйлчилгээний зориулалт сонгоно уу!"  >
+                      <nz-select #us [(ngModel)]="fdata.usID" (ngModelChange)="cmbMChange(2)">
+                        <nz-option nzValue="-1" nzLabel="Сонгох"></nz-option>
+                        <nz-option *ngFor="let state of usdata" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+                      </nz-select>
+                    </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item *ngIf="sw8">
+                    <nz-form-label  [nzSm]="12" [nzXs]="24"  >Зориулалтын дэлгэрэнгүй</nz-form-label>
+                    <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="дэлгэрэнгүй!">
+                        <input  type="text" nz-input [(ngModel)]="fdata.zdetail"  placeholder="дэлгэрэнгүй" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item *ngIf="sw9">
+                    <nz-form-label  [nzSm]="12" [nzXs]="24"  >Үйл ажиллагааны дэлгэрэнгүй</nz-form-label>
+                    <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="дэлгэрэнгүй!">
+                        <input  type="text" nz-input  [(ngModel)]="fdata.uadetail" placeholder="дэлгэрэнгүй" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item *ngIf="sw10"> 
+                    <nz-form-label [nzSm]="12" [nzXs]="24" style="white-space: pre-wrap" >Техникийн нөхцөлийн шалтгаан</nz-form-label>
+                    <nz-form-control [nzSm]="12" [nzXs]="24" nzErrorTip="Техникийн нөхцөлийн шалтгаан сонгоно уу!"  >
+                        <nz-select [(ngModel)]="fdata.tnrID" >
+                          <nz-option nzValue="-1" nzLabel="Сонгох"></nz-option>
+                          <nz-option *ngFor="let state of tnrdata" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+                        </nz-select>
+                    </nz-form-control>
+                   </nz-form-item>
+
+                  <nz-form-item *ngIf="sw11">
+                    <nz-form-label [nzSm]="12" [nzXs]="24" style="white-space: pre-wrap" >И-Төлөөлөгчөөр дамжуулах эсэх</nz-form-label>
+                    <nz-radio-group [(ngModel)]="fdata.artype" (ngModelChange)="cmbMChange(11)">
+                      <label nz-radio nzValue="1">тийм</label>
+                      <label nz-radio nzValue="0">үгүй</label>
+                    </nz-radio-group>
+                  </nz-form-item>
+    
+    
+    
+    
+    
+                  <div class="container mt-5 " *ngIf="sw12"> 
+                    <br><br>
+                    <nz-divider nzText="{{txtaccrdt}}" nzOrientation="left"></nz-divider>
+                    <div nz-row>
+                       <div nz-col nzMd="12">
+                        <nz-form-item>
+                          <nz-form-label  [nzSm]="7" [nzXs]="24"  >Регистер</nz-form-label>
+                          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Регистр оруулна уу!">
+                              <input  type="text" nz-input  [(ngModel)]="fdata.rNumber"  placeholder="регистер" />
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                          <nz-form-label [nzSm]="7" [nzXs]="24"  >Эцэг эхийн нэр</nz-form-label>
+                          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Эцэг эхийн нэр оруулна уу!">
+                              <input  type="text" nz-input [(ngModel)]="fdata.rlName"  placeholder="эцэг эхийн нэр" />
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                          <nz-form-label [nzSm]="7" [nzXs]="24"  >И-мэйл</nz-form-label>
+                          <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="И-мэйл оруулна уу!">
+                              <input  type="text" nz-input [(ngModel)]="fdata.remail"  placeholder="и-мэйл" />
+                            </nz-form-control>
+                        </nz-form-item>
+                       </div>
+                       <div nz-col nzMd="12">
+                        <nz-form-item>
+                          <nz-form-label [nzSm]="13"  [nzXs]="24" >Хүсэлт гаргагчийн хэн болох</nz-form-label>
+                          <nz-form-control [nzSm]="11"  nzErrorTip="Хүсэлт гаргагчийн хэн болох оруулна уу!">
+                            <nz-select [(ngModel)]="fdata.relType" >
+                              <nz-option nzValue="-1" nzLabel="Сонгох"></nz-option>
+                              <nz-option *ngFor="let state of reltypedata" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+                            </nz-select>
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                          <nz-form-label [nzSm]="13" [nzXs]="24"  >Өөрийн нэр</nz-form-label>
+                          <nz-form-control [nzSm]="11" [nzXs]="24" nzErrorTip="Өөрийн нэр оруулна уу!">
+                              <input  type="text" nz-input  [(ngModel)]="fdata.rfName" placeholder="өөрийн нэр" />
+                            </nz-form-control>
+                        </nz-form-item>
+                        <nz-form-item>
+                          <nz-form-label [nzSm]="13" [nzXs]="24"  >Харилцах утас</nz-form-label>
+                          <nz-form-control [nzSm]="11" [nzXs]="30" nzErrorTip="Харилцах утас оруулна уу!">
+                              <input  type="text" nz-input  [(ngModel)]="fdata.rpNumber" placeholder="харилцах утас" />
+                            </nz-form-control>
+                        </nz-form-item>
+                       </div>
+                    </div>
+                     
+                  </div>
+                  <div nz-row nzJustify="space-around" nzAlign="middle">
+                    <button  nz-button class="utbtnsuc" (click)="Save(fdata)" >{{fdata.rqID=='0'?'Нэмэх':'Засах'}}</button>
+                  </div>
+            </div>
+        </div>
+

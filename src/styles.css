@@ -1,0 +1,114 @@
+@import "~ng-zorro-antd/ng-zorro-antd.min.css";
+
+.utbtnsuc
+{
+    color: #fff;
+    background-color: #28a745;
+    border-color: #28a745;
+}
+.utbtninfo
+{
+  color: #fff;
+  background-color: #17a2b8;
+  border-color: #17a2b8;
+}
+
+
+.utflinpt
+{
+    border:0;
+    border-bottom: .05rem solid;
+    max-height: 1.2rem;
+    font-size: .85rem;
+    color: #914141;
+    border-radius: 0;
+    box-shadow: none;
+    display:inline block;
+    padding:0.3rem;
+    height:1.2rem;
+    margin:0;
+    -webkit-appearance:none;
+    background-color: #ffffffdb;
+  }
+.uttbbrdr
+{
+    border: 0.5px solid #a19f9f;
+}
+.utmainrg
+{
+    border: 1px solid black;
+    /* background-color: rgb(241, 234, 234);  */
+    background-color: rgb(240, 240, 240); 
+    padding: 10px; 
+    border-radius: 4px;
+}
+.uttxtbrwn
+{
+    color:#914141;
+}
+.uttxtprm{
+  color:#1890ff;
+}
+.utbdr
+{
+    border-radius: 5px; 
+}
+.ant-table-thead>tr>th 
+{
+  background-color: #1371b1e6 !important;  
+  border: .05rem solid rgba(253, 253, 253, 0.795) !important; 
+  color: #ffff;
+  font-weight: 300;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center !important;
+}
+::ng-deep.ant-table-cell
+{
+  /* color: #914141;
+  font-weight: 100 !important; */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+::ng-deep .uttblehdr{
+  background-color: #6396c9 !important;
+}
+.utmainbdr
+{
+    border: 1px solid black;
+    /* background-color: rgb(241, 234, 234);  */
+    background-color: rgb(240, 240, 240); 
+    padding: 5px; 
+    border-radius: 4px;
+}
+.ant-empty-description{
+  content: "Бичлэг олдсонгүй";
+}
+
+.ant-form-item-label>label
+{
+  font-size:15px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+.ant-select-single .ant-select-selector .ant-select-selection-item
+{
+  font-size:15px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+}
+
+.Fonttble
+{
+  font-size:14px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif !important;
+  color: #914141;
+  font-weight: 100;
+}
+.disabled-link 
+{
+    pointer-events: none; 
+    cursor: not-allowed;
+    color: red;  
+}
+
+.active-link 
+{
+    color: green;  
+}

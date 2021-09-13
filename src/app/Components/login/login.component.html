@@ -1,0 +1,65 @@
+<!-- <div style="background: url(../../assets/dsums.jpg) no-repeat center center fixed; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; height: 100vh !important;  overflow: hidden;"> -->
+<div id="appContainer">
+  <br />
+  <br />
+  <div nz-row>
+    <div nz-col nzMd="6" nzJustify="center">
+    </div>
+    <div nz-col nzMd="18" nzJustify="center">
+      <img src="../../assets/logo.png"
+        style="float: left; padding-right: 10px;padding-top: 0px; margin-top: 0px; height: 100px" />
+      <div style="margin-top: 15px;">
+        <h3 style="color: #1c4b35"><b>Дархан Сэлэнгийн Цахилгаан Түгээх Сүлжээ ХК</b></h3>
+        <h4 style="color: #1c4b35">Техникийн нөхцөл, үйчилгээний онлайн системд тавтай морил.</h4>
+      </div>
+
+    </div>
+  </div>
+  <div nz-row  nzJustify="center">
+    <div nz-col nzMd="4"></div>
+    <div nz-col nzMd="6">
+      <nz-content>
+        <nz-card>
+          <div nz-col nzMd="24">
+            <!-- <label  style="white-space: pre-line" *ngIf="message!=''" (close)="message=''">{{message}}</label> -->
+            <nz-alert nzType="error" nzMessage="{{message}}" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''" nzCloseable></nz-alert>
+           </div>
+          <form nz-form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Нэвтрэх нэрийг оруулна уу !">
+                <nz-input-group nzPrefixIcon="user">
+                  <input type="text" nz-input placeholder="Нэвтрэх нэр" formControlName="usr" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+              <nz-form-control nzErrorTip="Нууц үгийг оруулна уу!">
+                <nz-input-group nzPrefixIcon="lock">
+                  <input type="password" nz-input placeholder="Нууц үг" formControlName="pass" />
+                </nz-input-group>
+              </nz-form-control>
+            </nz-form-item>
+            <div nz-row nzJustify="space-around" nzAlign="middle">
+              <button  nz-button  nzType="primary">Нэвтрэх</button>
+            </div>
+          </form>
+        </nz-card>
+      </nz-content>
+    </div>
+    <div nz-col nzMd="10">
+      <nz-content>
+        <nz-card nzTitle="Техникийн нөхцлийн онлайн систем" style="opacity:0.8;margin-left: 20px;">
+          <ul style="font-size: 15px">
+            <li>Шинэ холболтын үйчилгээ</li>
+            <li>Холболтын цэг өөрчлөх</li>
+            <li>Хэрэглэгчийн зэрэглэл нэмэх</li>
+            <li>Хүчин чадал өөрчлөх</li>
+            <li>Нэр шилжүүлэх</li>
+            <li>Зориулалт өөрлөх </li>
+            <li>Хугацаа сунгах</li>
+          </ul>
+        </nz-card>
+      </nz-content>
+    </div>
+  </div>
+</div>

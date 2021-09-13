@@ -1,0 +1,128 @@
+
+<div nz-row  nzAlign="left">
+  <a nz-button  nzSize="small"  (click)="open(mdata)"  class="uttxtprm utbdr" ><i nz-icon nzType="plus"></i>Шинээр нэмэх</a>
+</div>
+<nz-table #basicTable [nzData]="rows" nzSize="small">
+<thead>
+  <tr >
+    <th nzWidth="10px">№</th>
+    <th nzJustify="center" nz-th>Бичииг баримтын нэр<br>
+    </th>
+    <th>Файлын нэр<br>
+
+    </th>
+    <th colspan="2" >Үйлдэл<br>
+
+    </th>
+
+  </tr>
+
+</thead>
+<tbody>
+  <tr *ngFor="let data of basicTable.data ;  let i = index" style="background-color: #fff  !important;" >
+
+      <td>{{i + 1}}</td>
+      <td>{{data.docName}}</td>
+      <td>{{data.sfName}}</td>
+      <td><button  nz-button  nzShape="circle" nzType="primary" nz-tooltip nzTooltipTitle="засах" (click)="open(data)"><i nz-icon nzType="edit"></i> </button></td>
+      <td><button  nz-button  nzTitle="ddss" nzShape="circle" nz-tooltip nzTooltipTitle="устгах"  nzDanger (click)="fileDel(data)"><i nz-icon nzType="delete"></i> </button></td>
+  </tr>
+</tbody>
+</nz-table>
+<nz-modal [(nzVisible)]="showMdl" nzWidth="1000px"  nzTitle="Шинээр нэмэх"  (nzOnCancel)="close()">
+    <div *nzModalContent>
+
+      <nz-alert nzType="success" nzMessage="{{message}}" style="white-space: pre-line" *ngIf="message!=''" (close)="message=''" ></nz-alert>
+
+      <nz-form-item style="padding-left: 80px;" >
+        <nz-form-label nzRequired>Идэвхитэй эсэх</nz-form-label>
+        <nz-radio-group [(ngModel)]="mdata.adType" >
+          <label nz-radio nzValue="1">тийм</label>
+          <label nz-radio nzValue="0">үгүй</label>
+        </nz-radio-group>
+      </nz-form-item>
+        <nz-form-item>
+          <nz-form-label [nzSpan]="5"  >Бичиг баримт</nz-form-label>
+          <nz-form-control [nzSpan]="12" nzErrorTip="Бичиг баримтын нэрийг оруулна уу!">
+            <input id="ovog" type="text"  nz-input [(ngModel)]="mdata.docName"  placeholder="Бичиг баримт" />
+          </nz-form-control>
+        </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5"  nzRequired>Үүсэх файлын нэр</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Үүсэх файлын нэрийг сонгоно уу!">
+          <nz-select   [(ngModel)]="mdata.sfID"  >
+            <nz-option   nzValue="0" nzLabel="Сонгох" ></nz-option>
+            <nz-option *ngFor="let state of sf" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5"  nzRequired>Ангилал</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Ангилалыг сонгоно уу!">
+          <nz-select [(ngModel)]="mdata.iwID">
+            <nz-option nzValue="0" nzLabel="Сонгох"></nz-option>
+            <nz-option *ngFor="let state of iw" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5"  nzRequired>Өөрчлөлт оруулах ангилал</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Өөрчлөлт оруулах ангилалыг сонгоно уу!">
+          <nz-select [(ngModel)]="mdata.chID" [value]="mdata.chID">
+            <nz-option nzValue="0" nzLabel="Сонгох"></nz-option>
+            <nz-option *ngFor="let state of ch" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5"  nzRequired>Зориулалт</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Зориулалтыг сонгоно уу!">
+          <nz-select [(ngModel)]="mdata.useID">
+            <nz-option nzValue="0" nzLabel="Сонгох"></nz-option>
+            <nz-option *ngFor="let state of use" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5"  nzRequired>Техникийн нөхцлийн<br>шалтгаан</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Техникийн нөхцлийн шалтгааныг сонгоно уу!">
+          <nz-select [(ngModel)]="mdata.reasonID">
+            <nz-option nzValue="0" nzLabel="Сонгох"></nz-option>
+            <nz-option *ngFor="let state of reason" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label [nzSpan]="5"  nzRequired>Хэрэглэгчийн төрөл</nz-form-label>
+        <nz-form-control [nzSpan]="12" nzErrorTip="Хэрэглэгчийн төрлийг сонгоно уу!">
+          <nz-select [(ngModel)]="mdata.custype">
+            <nz-option nzValue="0" nzLabel="Сонгох"></nz-option>
+            <nz-option *ngFor="let state of cus" [nzLabel]="state.name" [nzValue]="state.val" ></nz-option>
+          </nz-select>
+        </nz-form-control>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Огноо/Дугаар/Хуулас авах<br>эсэх</nz-form-label>
+        <nz-radio-group [(ngModel)]="mdata.dpnType" >
+          <label nz-radio nzValue="1">тийм</label>
+          <label nz-radio nzValue="0">үгүй</label>
+        </nz-radio-group>
+      </nz-form-item>
+      <nz-form-item>
+        <nz-form-label nzRequired>Энэ жилдээ авсан баримт<br>бичиг байх шаарлагатай</nz-form-label>
+        <nz-radio-group [(ngModel)]="mdata.hdocType" >
+          <label nz-radio nzValue="1">тийм</label>
+          <label nz-radio nzValue="0">үгүй</label>
+        </nz-radio-group>
+      </nz-form-item>
+
+    </div>
+    <div *nzModalFooter>
+      <div nz-row nzJustify="space-around" nzAlign="middle">
+        <button  nz-button class="utbtnsuc"  (click)="Save(mdata)" >{{mdata.docID=="0"?'Нэмэх':'Засах'}}</button>
+
+      </div>
+      </div>
+  </nz-modal>
+
